@@ -10,9 +10,9 @@ Install the package via Composer:
 composer require dulithaks/number-to-sinhala-words
 ```
 
-The service provider will be automatically registered in Laravel 5.5+.
+The service provider will be automatically registered in Laravel 6.0+.
 
-For older Laravel versions, add the service provider to your `config/app.php`:
+For older Laravel versions (below 6.0), add the service provider to your `config/app.php`:
 
 ```php
 'providers' => [
