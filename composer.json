@@ -1,0 +1,42 @@
+{
+    "name": "dulithaks/number-to-sinhala-words",
+    "description": "Convert numbers to Sinhala words in Laravel",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "sinhala", "number", "words", "converter"],
+    "authors": [
+        {
+            "name": "Dulitha Karunarathne"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0",
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dulithaks\\NumberToSinhalaWords\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dulithaks\\NumberToSinhalaWords\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dulithaks\\NumberToSinhalaWords\\NumberToSinhalaWordsServiceProvider"
+            ],
+            "aliases": {
+                "NumberToSinhalaWords": "Dulithaks\\NumberToSinhalaWords\\Facades\\NumberToSinhalaWords"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
