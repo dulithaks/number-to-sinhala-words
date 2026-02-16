@@ -227,14 +227,24 @@ class SinhalaConverter
 
             // Special case for exactly 10,000
             if ($number == 10000) {
-                return 'දහදාහ';
+                return 'දසදහස';
             }
 
-            $result = $this->convertTensRange($tenThousands) . ' දහස';
-            if ($remainder > 0) {
-                $result .= ' ' . $this->toWords($remainder);
+            // Special case for 10001+
+            if ($tenThousands == 10) {
+                if ($remainder > 0) {
+                    return 'දසදහස් ' . $this->toWords($remainder, true);
+                }
             }
-            return $result;
+
+            // For 20000, 30000, etc.
+            if ($remainder == 0) {
+                // Build exact ten-thousand form (e.g., විසිදහස for 20000)
+                return $this->convertTensRangeExact($tenThousands) . 'දහස';
+            } else {
+                // Build plural ten-thousand form (e.g., විසිදහස් for 20001+)
+                return $this->convertTensRangeExact($tenThousands) . 'දහස් ' . $this->toWords($remainder, true);
+            }
         }
 
         // Handle thousands (1000-9999)
@@ -256,7 +266,8 @@ class SinhalaConverter
                         4 => 'හාරසීය',
                         5 => 'පන්සීය',
                         6 => 'හයසීය',
-                        7 => 'හත්සීය',
+                        // use 'හත' form inside the thousand context (tests expect this)
+                        7 => 'හතසීය',
                         8 => 'අටසීය',
                         9 => 'නවසීය'
                     ];
@@ -302,6 +313,8 @@ class SinhalaConverter
                         // thousand-context corrections: 100 uses 'එකසීය', 700 uses 'හතසීය'
                         if ($remainder === 100) {
                             $hundredsWord = 'එකසීය';
+                        } elseif ($remainder === 700) {
+                            $hundredsWord = 'හතසීය';
                         }
 
                         $result .= ' ' . $hundredsWord;
@@ -426,6 +439,50 @@ class SinhalaConverter
 
         if ($number == 10) {
             return 'දහ';
+        }
+
+        return self::$ones[$number];
+    }
+
+    /**
+     * Convert tens range numbers (10-99) for ten-thousands (exact form)
+     * 
+     * @param int $number
+     * @return string
+     */
+    private function convertTensRangeExact($number)
+    {
+        if ($number >= 20) {
+            $tens = floor($number / 10) * 10;
+            $ones = $number % 10;
+
+            if ($ones > 0) {
+                // For 21, 22, etc. in ten-thousand context (e.g., විසිඑක for 21000)
+                return self::$compoundTens[$tens] . self::$ones[$ones];
+            } else {
+                // 20, 30, etc. (e.g., විසි for 20000)
+                return self::$compoundTens[$tens];
+            }
+        }
+
+        if ($number >= 11 && $number <= 19) {
+            // Teens in ten-thousand context
+            $teensTenThousands = [
+                11 => 'එකොළොස්',
+                12 => 'දොළොස්',
+                13 => 'දහතුන්',
+                14 => 'දාහතර',
+                15 => 'පහළොස්',
+                16 => 'දාසය',
+                17 => 'දාහත්',
+                18 => 'දහඅට',
+                19 => 'දහනව'
+            ];
+            return $teensTenThousands[$number];
+        }
+
+        if ($number == 10) {
+            return 'දස';
         }
 
         return self::$ones[$number];
