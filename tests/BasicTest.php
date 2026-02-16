@@ -111,7 +111,7 @@ class BasicTest extends TestCase
     /** @test */
     public function it_converts_millions_and_crores_to_words()
     {
-        $this->assertEquals('මිලියනය', $this->converter->toWords(1000000));
+        $this->assertEquals('දශලක්ෂය', $this->converter->toWords(1000000));
         $this->assertEquals('කෝටිය', $this->converter->toWords(10000000));
         $this->assertEquals('දස කෝටිය', $this->converter->toWords(100000000));
         $this->assertEquals('බිලියනය', $this->converter->toWords(1000000000));

@@ -192,20 +192,7 @@ class SinhalaConverter
             return $result;
         }
 
-        // Handle million (1,000,000)
-        if ($number >= 1000000) {
-            $millions = floor($number / 1000000);
-            $remainder = $number % 1000000;
-            if ($millions == 1) {
-                $result = 'මිලියනය';
-            } else {
-                $result = $this->toWords($millions) . ' මිලියනය';
-            }
-            if ($remainder > 0) {
-                $result .= ' ' . $this->toWords($remainder);
-            }
-            return $result;
-        }
+        // (Note: 'මිලියනය' removed — numbers in the millions are represented using lakhs)
 
         // Handle lakh (100,000)
         if ($number >= 100000) {
@@ -214,7 +201,33 @@ class SinhalaConverter
             if ($lakhs == 1) {
                 $result = 'ලක්ෂය';
             } else {
-                $result = $this->toWords($lakhs) . ' ලක්ෂය';
+                // use concatenated prefix forms for common lakh counts (e.g. 'දෙලක්ෂය', 'තුන්ලක්ෂය', 'දශලක්ෂය')
+                $lakhPrefixes = [
+                    2  => 'දෙ',
+                    3  => 'තුන්',
+                    4  => 'හාර',
+                    5  => 'පන්',
+                    6  => 'හය',
+                    7  => 'හත්',
+                    8  => 'අට',
+                    9  => 'නව',
+                    // tens-of-lakhs (supports 10,20,...,90 lakhs)
+                    10 => 'දශ',
+                    20 => 'විසි',
+                    30 => 'තිස්',
+                    40 => 'හතළිස්',
+                    50 => 'පනස්',
+                    60 => 'හැට',
+                    70 => 'හැත්තෑ',
+                    80 => 'අසූ',
+                    90 => 'අනූ',
+                ];
+
+                if (isset($lakhPrefixes[$lakhs])) {
+                    $result = $lakhPrefixes[$lakhs] . 'ලක්ෂය';
+                } else {
+                    $result = $this->toWords($lakhs) . ' ලක්ෂය';
+                }
             }
             if ($remainder > 0) {
                 $result .= ' ' . $this->toWords($remainder);
