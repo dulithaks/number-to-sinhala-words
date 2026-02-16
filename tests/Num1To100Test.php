@@ -5,7 +5,7 @@ namespace Dulithaks\NumberToSinhalaWords\Tests;
 use Dulithaks\NumberToSinhalaWords\SinhalaConverter;
 use PHPUnit\Framework\TestCase;
 
-class OneToHundredTest extends TestCase
+class Num1To100Test extends TestCase
 {
     protected $converter;
 
