@@ -201,31 +201,30 @@ class SinhalaConverter
             if ($lakhs == 1) {
                 $result = 'ලක්ෂය';
             } else {
-                // use concatenated prefix forms for common lakh counts (e.g. 'දෙලක්ෂය', 'තුන්ලක්ෂය', 'දශලක්ෂය')
-                $lakhPrefixes = [
-                    2  => 'දෙ',
-                    3  => 'තුන්',
-                    4  => 'හාර',
-                    5  => 'පන්',
-                    6  => 'හය',
-                    7  => 'හත්',
-                    8  => 'අට',
-                    9  => 'නව',
-                    // tens-of-lakhs (supports 10,20,...,90 lakhs)
-                    10 => 'දශ',
-                    20 => 'විසි',
-                    30 => 'තිස්',
-                    40 => 'හතළිස්',
-                    50 => 'පනස්',
-                    60 => 'හැට',
-                    70 => 'හැත්තෑ',
-                    80 => 'අසූ',
-                    90 => 'අනූ',
+                // Single-lakh concatenated prefixes (2-9).
+                $singlePrefixes = [
+                    2 => 'දෙ',
+                    3 => 'තුන්',
+                    4 => 'හාර',
+                    5 => 'පන්',
+                    6 => 'හය',
+                    7 => 'හත්',
+                    8 => 'අට',
+                    9 => 'නව',
                 ];
 
-                if (isset($lakhPrefixes[$lakhs])) {
-                    $result = $lakhPrefixes[$lakhs] . 'ලක්ෂය';
+                // 2..9 => concatenated (e.g. 'දෙලක්ෂය')
+                if (isset($singlePrefixes[$lakhs])) {
+                    $result = $singlePrefixes[$lakhs] . 'ලක්ෂය';
+                } elseif ($lakhs == 10) {
+                    // 10 lakhs is a special concatenated form
+                    $result = 'දශලක්ෂය';
+                } elseif ($lakhs < 100) {
+                    // For 11-99 use ten-thousands style prefixes and add a space
+                    // e.g. 11 -> 'එකොළොස් ලක්ෂය', 21 -> 'විසිඑක් ලක්ෂය'
+                    $result = $this->convertTensRangeExact($lakhs) . ' ලක්ෂය';
                 } else {
+                    // fallback
                     $result = $this->toWords($lakhs) . ' ලක්ෂය';
                 }
             }

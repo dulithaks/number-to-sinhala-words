@@ -32,6 +32,30 @@ class Num100000To10000000Test extends TestCase
         $this->assertEquals('අටලක්ෂය', $this->converter->toWords(800000));
         $this->assertEquals('නවලක්ෂය', $this->converter->toWords(900000));
         $this->assertEquals('දශලක්ෂය', $this->converter->toWords(1000000));
+
+        // 1,100,000 – 2,000,000
+        $this->assertEquals('එකොළොස් ලක්ෂය', $this->converter->toWords(1100000));
+        $this->assertEquals('දොළොස් ලක්ෂය', $this->converter->toWords(1200000));
+        $this->assertEquals('දහතුන් ලක්ෂය', $this->converter->toWords(1300000));
+        $this->assertEquals('දහහතර ලක්ෂය', $this->converter->toWords(1400000));
+        $this->assertEquals('පහළොස් ලක්ෂය', $this->converter->toWords(1500000));
+        $this->assertEquals('දහසය ලක්ෂය', $this->converter->toWords(1600000));
+        $this->assertEquals('දහහත ලක්ෂය', $this->converter->toWords(1700000));
+        $this->assertEquals('දහඅට ලක්ෂය', $this->converter->toWords(1800000));
+        $this->assertEquals('දහනව ලක්ෂය', $this->converter->toWords(1900000));
+        $this->assertEquals('විසි ලක්ෂය', $this->converter->toWords(2000000));
+
+        // 2,100,000 – 3,000,000
+        $this->assertEquals('විසිඑක් ලක්ෂය', $this->converter->toWords(2100000));
+        $this->assertEquals('විසිදෙ ලක්ෂය', $this->converter->toWords(2200000));
+        $this->assertEquals('විසිතුන් ලක්ෂය', $this->converter->toWords(2300000));
+        $this->assertEquals('විසිහතර ලක්ෂය', $this->converter->toWords(2400000));
+        $this->assertEquals('විසිපන් ලක්ෂය', $this->converter->toWords(2500000));
+        $this->assertEquals('විසිහය ලක්ෂය', $this->converter->toWords(2600000));
+        $this->assertEquals('විසිහත් ලක්ෂය', $this->converter->toWords(2700000));
+        $this->assertEquals('විසිඅට ලක්ෂය', $this->converter->toWords(2800000));
+        $this->assertEquals('විසිනව ලක්ෂය', $this->converter->toWords(2900000));
+        $this->assertEquals('තිස් ලක්ෂය', $this->converter->toWords(3000000));
     }
 
 
