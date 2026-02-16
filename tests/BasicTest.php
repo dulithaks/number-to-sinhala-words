@@ -106,13 +106,13 @@ class BasicTest extends TestCase
     {
         $this->assertEquals('සියය', $this->converter->toWords(100));
         $this->assertEquals('එකසිය එක', $this->converter->toWords(101));
-        $this->assertEquals('දෙසිය', $this->converter->toWords(200));
+        $this->assertEquals('දෙසීය', $this->converter->toWords(200));
         $this->assertEquals('එකසිය විස්ස', $this->converter->toWords(120));
         $this->assertEquals('එකසිය විසි එක', $this->converter->toWords(121));
         $this->assertEquals('එකසිය විසි තුන', $this->converter->toWords(123));
-        $this->assertEquals('තුන්සියය', $this->converter->toWords(300));
-        $this->assertEquals('හාරසියය', $this->converter->toWords(400));
-        $this->assertEquals('පන්සියය', $this->converter->toWords(500));
+        $this->assertEquals('තුන්සීය', $this->converter->toWords(300));
+        $this->assertEquals('හාරසීය', $this->converter->toWords(400));
+        $this->assertEquals('පන්සීය', $this->converter->toWords(500));
     }
 
     /** @test */

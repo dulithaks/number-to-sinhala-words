@@ -58,10 +58,10 @@ class SinhalaConverter
 
     private static $hundreds = [
         100 => 'සියය',
-        200 => 'දෙසිය',
-        300 => 'තුන්සියය',
-        400 => 'හාරසියය',
-        500 => 'පන්සියය',
+        200 => 'දෙසීය',
+        300 => 'තුන්සීය',
+        400 => 'හාරසීය',
+        500 => 'පන්සීය',
         600 => 'හයසීය',
         700 => 'හත්සීය',
         800 => 'අටසීය',
@@ -292,7 +292,8 @@ class SinhalaConverter
             }
 
             if ($remainder > 0) {
-                $result .= ' ' . $this->toWords($remainder);
+                // pass isCompound=true so nested exact-hundreds use prefix forms (e.g. 2500 -> 'දෙදහස් පන්සිය')
+                $result .= ' ' . $this->toWords($remainder, true);
             }
 
             return $result;
@@ -305,6 +306,11 @@ class SinhalaConverter
 
             // Exact hundreds (100, 200, 300, etc.)
             if ($remainder == 0 && isset(self::$hundreds[$number])) {
+                // if this hundred is part of a larger compound number, use the short prefix form
+                if ($isCompound) {
+                    return self::$hundredPrefixes[$hundreds];
+                }
+
                 return self::$hundreds[$number];
             }
 

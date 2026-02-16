@@ -74,6 +74,8 @@ class Num1000To9999Test extends TestCase
         // 2000 to 2999 (random samples)
         $this->assertEquals('දෙදහස', $this->converter->toWords(2000));
         $this->assertEquals('දෙදහස් එක', $this->converter->toWords(2001));
+        $this->assertEquals('දෙදහස් දෙසිය දොළහ', $this->converter->toWords(2212));
+        $this->assertEquals('දෙදහස් පන්සිය', $this->converter->toWords(2500));
 
     }
 }
