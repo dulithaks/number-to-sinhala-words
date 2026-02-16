@@ -95,6 +95,7 @@ echo $converter->toCurrency(250.75, '$.');
 Convert a number to Sinhala words.
 
 **Parameters:**
+
 - `$number` (int|float): The number to convert
 
 **Returns:** (string) The number in Sinhala words
@@ -107,8 +108,9 @@ $converter->toWords(10);       // දහය
 $converter->toWords(100);      // එක සියය
 $converter->toWords(1000);     // එක දහස
 $converter->toWords(100000);   // එක ලක්ෂ
+$converter->toWords(1000000);  // දශලක්ෂය
 $converter->toWords(10000000); // එක කෝටි
-$converter->toWords(-5);       // ඍණ පහ
+// Negative inputs are not supported and will throw \Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException
 $converter->toWords(12.34);    // දොළහ දශම තුන හතර
 ```
 
@@ -117,6 +119,7 @@ $converter->toWords(12.34);    // දොළහ දශම තුන හතර
 Convert a currency amount to Sinhala words.
 
 **Parameters:**
+
 - `$amount` (float): The amount to convert
 - `$currency` (string, optional): The currency symbol (default: 'රු.')
 
@@ -128,19 +131,52 @@ Convert a currency amount to Sinhala words.
 $converter->toCurrency(100);           // රු. එක සියය
 $converter->toCurrency(100.50);        // රු. එක සියය සහ සත පනස
 $converter->toCurrency(100, '$.');     // $. එක සියය
-$converter->toCurrency(-50.25);        // ඍණ රු. පනස සහ සත විස්ස පහ
+$converter->toCurrency(-50.25);        // throws \Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException
 ```
 
 ## Supported Number Ranges
 
-- **Ones**: 1-9
-- **Tens**: 10-99
-- **Hundreds**: 100-999
-- **Thousands**: 1,000-99,999
-- **Lakhs**: 100,000-9,999,999
-- **Crores**: 10,000,000 and above
-- **Decimals**: Supported
-- **Negative numbers**: Supported
+- **Working range:** `0` to `10,000,000` (inclusive)
+- **Decimals:** Supported
+- **Negative numbers:** Not supported — passing a negative value will throw \Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException
+
+## Exception Handling
+
+The package throws a custom `NegativeNumberException` when you pass a negative number:
+
+```php
+use Dulithaks\NumberToSinhalaWords\SinhalaConverter;
+use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
+
+$converter = new SinhalaConverter();
+
+try {
+    echo $converter->toWords(-100);
+} catch (NegativeNumberException $e) {
+    echo "Error: " . $e->getMessage();
+    // Output: Error: Negative numbers are not supported.
+}
+
+try {
+    echo $converter->toCurrency(-50.25);
+} catch (NegativeNumberException $e) {
+    echo "Error: " . $e->getMessage();
+    // Output: Error: Negative currency amounts are not supported.
+}
+```
+
+Using the facade:
+
+```php
+use NumberToSinhalaWords;
+use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
+
+try {
+    echo NumberToSinhalaWords::toWords(-5);
+} catch (NegativeNumberException $e) {
+    echo "Please enter a positive number.";
+}
+```
 
 ## Testing
 
@@ -160,6 +196,6 @@ vendor/bin/phpunit
 
 MIT License
 
-## Credits
+## References
 
-- Dulitha Karunarathne
+- https://en.wikibooks.org/wiki/Sinhala/1.10
