@@ -247,10 +247,15 @@ class SinhalaConverter
                         9 => 'නවසීය'
                     ];
 
-                    $result = 'එක්දහස් ' . $hundredWords[$hundreds];
                     if ($underHundred > 0) {
+                        // when the hundred part is followed by more words use the short form (e.g. "එකසිය එක")
+                        $result = 'එක්දහස් ' . self::$hundredPrefixes[$hundreds];
                         $result .= ' ' . $this->convertUnderHundred($underHundred, true);
+                    } else {
+                        // exact hundred (e.g. 1100) uses the long form (e.g. "එකසීය")
+                        $result = 'එක්දහස් ' . $hundredWords[$hundreds];
                     }
+
                     return $result;
                 } else {
                     // 1001-1099
