@@ -108,6 +108,7 @@ $converter->toWords(10);       // දහය
 $converter->toWords(100);      // එක සියය
 $converter->toWords(1000);     // එක දහස
 $converter->toWords(100000);   // එක ලක්ෂ
+$converter->toWords(1000000);  // දශලක්ෂය
 $converter->toWords(10000000); // එක කෝටි
 // Negative inputs are not supported and will throw \Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException
 $converter->toWords(12.34);    // දොළහ දශම තුන හතර

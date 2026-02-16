@@ -192,7 +192,7 @@ class SinhalaConverter
             return $result;
         }
 
-        // (Note: 'මිලියනය' removed — numbers in the millions are represented using lakhs)
+        // Represent millions using lakh-based phrasing (e.g. 1,000,000 -> දශලක්ෂය)
 
         // Handle lakh (100,000)
         if ($number >= 100000) {

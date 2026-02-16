@@ -27,6 +27,7 @@ echo PHP_EOL;
 // Large numbers
 echo "Large Numbers:" . PHP_EOL;
 echo "100,000 => " . $converter->toWords(100000) . PHP_EOL;
+echo "1,000,000 => " . $converter->toWords(1000000) . PHP_EOL;
 echo "1,234,567 => " . $converter->toWords(1234567) . PHP_EOL;
 echo "10,000,000 => " . $converter->toWords(10000000) . PHP_EOL;
 echo PHP_EOL;
