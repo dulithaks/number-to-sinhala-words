@@ -163,3 +163,7 @@ MIT License
 ## Credits
 
 - Dulitha Karunarathne
+
+## References
+
+- https://en.wikibooks.org/wiki/Sinhala/1.10
