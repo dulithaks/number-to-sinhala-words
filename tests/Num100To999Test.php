@@ -132,11 +132,6 @@ class Num100To999Test extends TestCase
         $this->assertEquals('තුන්සිය එක', $this->converter->toWords(301));
         $this->assertEquals('තුන්සිය දොළහ', $this->converter->toWords(312));
 
-        // 300 - 399
-        $this->assertEquals('තුන්සිය', $this->converter->toWords(300));
-        $this->assertEquals('තුන්සිය එක', $this->converter->toWords(301));
-        $this->assertEquals('තුන්සිය දොළහ', $this->converter->toWords(312));
-
         // 400 - 499
         $this->assertEquals('හාරසියය', $this->converter->toWords(400));
         $this->assertEquals('හාරසිය එක', $this->converter->toWords(401));
