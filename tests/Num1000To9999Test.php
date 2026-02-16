@@ -21,8 +21,8 @@ class Num1000To9999Test extends TestCase
     public function it_converts_random_numbers_between_1001_and_10000_to_words()
     {
         // 1001 - 1100
-        $this->assertEquals('දහස එක', $this->converter->toWords(1001));
-        $this->assertEquals('දහස එක', $this->converter->toWords(1001));
+        $this->assertEquals('එක්දහස් එක', $this->converter->toWords(1001));
+        $this->assertEquals('එක්දහස් එක', $this->converter->toWords(1001));
 
         // 11 - 20
         $this->assertEquals('එකොළහ', $this->converter->toWords(11));
