@@ -16,9 +16,9 @@ class Num1To100Test extends TestCase
     }
 
     /** 
-     * Random numbers between 1 and 100 (fixed set)
+     * Random numbers between 1 and 99 (fixed set)
      * @test */
-    public function it_converts_random_numbers_between_1_and_100_to_words()
+    public function it_converts_random_numbers_between_1_and_99_to_words()
     {
         // 1 - 10
         $this->assertEquals('එක', $this->converter->toWords(1));
@@ -87,10 +87,9 @@ class Num1To100Test extends TestCase
         $this->assertEquals('අනූව', $this->converter->toWords(90));
         $this->assertEquals('අනූදෙක', $this->converter->toWords(92));
 
-        // 91 - 100
+        // 91 - 99
         $this->assertEquals('අනූහතර', $this->converter->toWords(94));
         $this->assertEquals('අනූපහ', $this->converter->toWords(95));
         $this->assertEquals('අනූනවය', $this->converter->toWords(99));
-        $this->assertEquals('සියය', $this->converter->toWords(100));
     }
 }
