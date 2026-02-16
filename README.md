@@ -95,6 +95,7 @@ echo $converter->toCurrency(250.75, '$.');
 Convert a number to Sinhala words.
 
 **Parameters:**
+
 - `$number` (int|float): The number to convert
 
 **Returns:** (string) The number in Sinhala words
@@ -117,6 +118,7 @@ $converter->toWords(12.34);    // දොළහ දශම තුන හතර
 Convert a currency amount to Sinhala words.
 
 **Parameters:**
+
 - `$amount` (float): The amount to convert
 - `$currency` (string, optional): The currency symbol (default: 'රු.')
 
