@@ -2,6 +2,8 @@
 
 namespace Dulithaks\NumberToSinhalaWords;
 
+use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
+
 class SinhalaConverter
 {
     /**
@@ -115,9 +117,9 @@ class SinhalaConverter
      */
     public function toWords($number, $isCompound = false)
     {
-        // Handle negative numbers
+        // Reject negative numbers
         if ($number < 0) {
-            return 'ඍණ ' . $this->toWords(abs($number));
+            throw new NegativeNumberException('Negative numbers are not supported.');
         }
 
         // Handle zero
@@ -509,9 +511,9 @@ class SinhalaConverter
      */
     public function toCurrency($amount, $currency = 'රු.')
     {
-        // Handle negative amounts
+        // Reject negative amounts
         if ($amount < 0) {
-            return 'ඍණ ' . $this->toCurrency(abs($amount), $currency);
+            throw new NegativeNumberException('Negative currency amounts are not supported.');
         }
 
         // Split into rupees and cents

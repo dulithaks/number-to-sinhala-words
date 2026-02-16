@@ -3,6 +3,7 @@
 namespace Dulithaks\NumberToSinhalaWords\Tests;
 
 use Dulithaks\NumberToSinhalaWords\SinhalaConverter;
+use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
 use PHPUnit\Framework\TestCase;
 
 class BasicTest extends TestCase
@@ -117,11 +118,18 @@ class BasicTest extends TestCase
     }
 
     /** @test */
-    public function it_converts_negative_numbers_to_words()
+    public function it_throws_for_negative_numbers_to_words()
     {
-        $this->assertEquals('ඍණ එක', $this->converter->toWords(-1));
-        $this->assertEquals('ඍණ විසිපහ', $this->converter->toWords(-25));
-        $this->assertEquals('ඍණ සියය', $this->converter->toWords(-100));
+        $values = [-1, -25, -100];
+
+        foreach ($values as $v) {
+            try {
+                $this->converter->toWords($v);
+                $this->fail("Expected NegativeNumberException for value {$v}");
+            } catch (NegativeNumberException $e) {
+                $this->assertStringContainsString('Negative', $e->getMessage());
+            }
+        }
     }
 
     /** @test */
@@ -162,10 +170,18 @@ class BasicTest extends TestCase
     }
 
     /** @test */
-    public function it_converts_negative_currency_to_words()
+    public function it_throws_for_negative_currency_to_words()
     {
-        $this->assertEquals('ඍණ රු. එක', $this->converter->toCurrency(-1));
-        $this->assertEquals('ඍණ රු. විසිපහ', $this->converter->toCurrency(-25));
+        $values = [-1, -25];
+
+        foreach ($values as $v) {
+            try {
+                $this->converter->toCurrency($v);
+                $this->fail("Expected NegativeNumberException for value {$v}");
+            } catch (NegativeNumberException $e) {
+                $this->assertStringContainsString('Negative', $e->getMessage());
+            }
+        }
     }
 
     /** @test */
@@ -173,5 +189,20 @@ class BasicTest extends TestCase
     {
         $this->assertEquals('$. විසිපහ', $this->converter->toCurrency(25, '$.'));
         $this->assertEquals('LKR. සියය', $this->converter->toCurrency(100, 'LKR.'));
+    }
+
+    /** @test */
+    public function it_converts_lower_boundary_zero()
+    {
+        $this->assertEquals('බිංදුව', $this->converter->toWords(0));
+        $this->assertEquals('රු. බිංදුව', $this->converter->toCurrency(0));
+    }
+
+    /** @test */
+    public function it_converts_upper_boundary_ten_million()
+    {
+        $this->assertEquals('කෝටිය', $this->converter->toWords(10000000));
+        $result = $this->converter->toCurrency(10000000);
+        $this->assertStringContainsString('කෝටිය', $result);
     }
 }
