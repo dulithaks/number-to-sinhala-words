@@ -457,8 +457,20 @@ class SinhalaConverter
             $ones = $number % 10;
 
             if ($ones > 0) {
-                // For 21, 22, etc. in ten-thousand context (e.g., විසිඑක for 21000)
-                return self::$compoundTens[$tens] . self::$ones[$ones];
+                // For 21, 22, etc. in ten-thousand context (e.g., විසිඑක් for 21, විසිදෙ for 22)
+                // Create special mapping for ones in this context
+                $onesForTenThousands = [
+                    1 => 'එක්',
+                    2 => 'දෙ',
+                    3 => 'තුන්',
+                    4 => 'හතර',
+                    5 => 'පන්',
+                    6 => 'හය',
+                    7 => 'හත්',
+                    8 => 'අට',
+                    9 => 'නව'
+                ];
+                return self::$compoundTens[$tens] . $onesForTenThousands[$ones];
             } else {
                 // 20, 30, etc. (e.g., විසි for 20000)
                 return self::$compoundTens[$tens];
@@ -471,10 +483,10 @@ class SinhalaConverter
                 11 => 'එකොළොස්',
                 12 => 'දොළොස්',
                 13 => 'දහතුන්',
-                14 => 'දාහතර',
+                14 => 'දහහතර',
                 15 => 'පහළොස්',
-                16 => 'දාසය',
-                17 => 'දාහත්',
+                16 => 'දහසය',
+                17 => 'දහහත',
                 18 => 'දහඅට',
                 19 => 'දහනව'
             ];
