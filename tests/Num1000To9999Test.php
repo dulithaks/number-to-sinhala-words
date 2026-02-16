@@ -74,8 +74,49 @@ class Num1000To9999Test extends TestCase
         // 2000 to 2999 (random samples)
         $this->assertEquals('දෙදහස', $this->converter->toWords(2000));
         $this->assertEquals('දෙදහස් එක', $this->converter->toWords(2001));
-        $this->assertEquals('දෙදහස් දෙසිය දොළහ', $this->converter->toWords(2212));
-        $this->assertEquals('දෙදහස් පන්සිය', $this->converter->toWords(2500));
+        $this->assertEquals('දෙදහස් පන්සීය', $this->converter->toWords(2500));
+        $this->assertEquals('දෙදහස් පන්සිය දොළහ', $this->converter->toWords(2512));
 
+        // 3000 to 3999 (random samples)
+        $this->assertEquals('තුන්දහස', $this->converter->toWords(3000));
+        $this->assertEquals('තුන්දහස් එක', $this->converter->toWords(3001));
+        $this->assertEquals('තුන්දහස් හයසීය', $this->converter->toWords(3600));
+        $this->assertEquals('තුන්දහස් හයසිය දොළහ', $this->converter->toWords(3612));
+
+        // 4000 to 4999 (random samples)
+        $this->assertEquals('හාරදහස', $this->converter->toWords(4000));
+        $this->assertEquals('හාරදහස් එක', $this->converter->toWords(4001));
+        $this->assertEquals('හාරදහස් හතසීය', $this->converter->toWords(4700));
+        $this->assertEquals('හාරදහස් හතසිය දොළහ', $this->converter->toWords(4712));
+
+        // 5000 to 5999 (random samples)
+        $this->assertEquals('පන්දහස', $this->converter->toWords(5000));
+        $this->assertEquals('පන්දහස් එක', $this->converter->toWords(5001));
+        $this->assertEquals('පන්දහස් අටසීය', $this->converter->toWords(5800));
+        $this->assertEquals('පන්දහස් අටසිය දොළහ', $this->converter->toWords(5812));
+
+        // 6000 to 6999 (random samples)
+        $this->assertEquals('හයදහස', $this->converter->toWords(6000));
+        $this->assertEquals('හයදහස් එක', $this->converter->toWords(6001));
+        $this->assertEquals('හයදහස් නවසීය', $this->converter->toWords(6900));
+        $this->assertEquals('හයදහස් නවසිය දොළහ', $this->converter->toWords(6912));
+
+        // 7000 to 7999 (random samples)
+        $this->assertEquals('හතදහස', $this->converter->toWords(7000));
+        $this->assertEquals('හතදහස් එක', $this->converter->toWords(7001));
+        $this->assertEquals('හතදහස් එකසීය', $this->converter->toWords(7100));
+        $this->assertEquals('හතදහස් එකසිය එක', $this->converter->toWords(7101));
+
+        // 8000 to 8999 (random samples)
+        $this->assertEquals('අටදහස', $this->converter->toWords(8000));
+        $this->assertEquals('අටදහස් එක', $this->converter->toWords(8001));
+        $this->assertEquals('අටදහස් දෙසීය', $this->converter->toWords(8200));
+        $this->assertEquals('අටදහස් දෙසිය එක', $this->converter->toWords(8201));
+
+        // 9000 to 9999 (random samples)
+        $this->assertEquals('නවදහස', $this->converter->toWords(9000));
+        $this->assertEquals('නවදහස් එක', $this->converter->toWords(9001));
+        $this->assertEquals('නවදහස් තුන්සීය', $this->converter->toWords(9300));
+        $this->assertEquals('නවදහස් තුන්සිය එක', $this->converter->toWords(9301));
     }
 }

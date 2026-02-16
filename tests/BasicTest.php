@@ -102,32 +102,6 @@ class BasicTest extends TestCase
     }
 
     /** @test */
-    public function it_converts_hundreds_to_words()
-    {
-        $this->assertEquals('සියය', $this->converter->toWords(100));
-        $this->assertEquals('එකසිය එක', $this->converter->toWords(101));
-        $this->assertEquals('දෙසීය', $this->converter->toWords(200));
-        $this->assertEquals('එකසිය විස්ස', $this->converter->toWords(120));
-        $this->assertEquals('එකසිය විසි එක', $this->converter->toWords(121));
-        $this->assertEquals('එකසිය විසි තුන', $this->converter->toWords(123));
-        $this->assertEquals('තුන්සීය', $this->converter->toWords(300));
-        $this->assertEquals('හාරසීය', $this->converter->toWords(400));
-        $this->assertEquals('පන්සීය', $this->converter->toWords(500));
-    }
-
-    /** @test */
-    public function it_converts_thousands_to_words()
-    {
-        $this->assertEquals('දහස', $this->converter->toWords(1000));
-        $this->assertEquals('එක්දහස් එකසීය', $this->converter->toWords(1100));
-        $this->assertEquals('එක්දහස් පන්සීය', $this->converter->toWords(1500));
-        $this->assertEquals('දෙදහස', $this->converter->toWords(2000));
-        $this->assertEquals('තුන්දහස', $this->converter->toWords(3000));
-        $this->assertEquals('දහදාහ', $this->converter->toWords(10000));
-        $this->assertEquals('විසි දහස', $this->converter->toWords(20000));
-    }
-
-    /** @test */
     public function it_converts_lakhs_to_words()
     {
         $this->assertEquals('ලක්ෂය', $this->converter->toWords(100000));
