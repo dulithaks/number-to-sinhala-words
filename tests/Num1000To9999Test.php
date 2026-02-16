@@ -21,7 +21,7 @@ class Num1000To9999Test extends TestCase
     public function it_converts_random_numbers_between_1001_and_10000_to_words()
     {
         // 1000 to 1099
-        $this->assertEquals('දාහ', $this->converter->toWords(1000));
+        $this->assertEquals('දහස', $this->converter->toWords(1000));
         $this->assertEquals('එක්දහස් එක', $this->converter->toWords(1001));
         $this->assertEquals('එක්දහස් දොළහ', $this->converter->toWords(1012));
 
@@ -45,5 +45,35 @@ class Num1000To9999Test extends TestCase
         $this->assertEquals('එක්දහස් හාරසීය', $this->converter->toWords(1400));
         $this->assertEquals('එක්දහස් හාරසිය එක', $this->converter->toWords(1401));
         $this->assertEquals('එක්දහස් හාරසිය දොළහ', $this->converter->toWords(1412));
+
+        // 1500 to 1599
+        $this->assertEquals('එක්දහස් පන්සීය', $this->converter->toWords(1500));
+        $this->assertEquals('එක්දහස් පන්සිය එක', $this->converter->toWords(1501));
+        $this->assertEquals('එක්දහස් පන්සිය දොළහ', $this->converter->toWords(1512));
+
+        // 1600 to 1699
+        $this->assertEquals('එක්දහස් හයසීය', $this->converter->toWords(1600));
+        $this->assertEquals('එක්දහස් හයසිය එක', $this->converter->toWords(1601));
+        $this->assertEquals('එක්දහස් හයසිය දොළහ', $this->converter->toWords(1612));
+
+        // 1700 to 1799
+        $this->assertEquals('එක්දහස් හතසීය', $this->converter->toWords(1700));
+        $this->assertEquals('එක්දහස් හතසිය එක', $this->converter->toWords(1701));
+        $this->assertEquals('එක්දහස් හතසිය දොළහ', $this->converter->toWords(1712));
+
+        // 1800 to 1899
+        $this->assertEquals('එක්දහස් අටසීය', $this->converter->toWords(1800));
+        $this->assertEquals('එක්දහස් අටසිය එක', $this->converter->toWords(1801));
+        $this->assertEquals('එක්දහස් අටසිය දොළහ', $this->converter->toWords(1812));
+
+        // 1900 to 1999
+        $this->assertEquals('එක්දහස් නවසීය', $this->converter->toWords(1900));
+        $this->assertEquals('එක්දහස් නවසිය එක', $this->converter->toWords(1901));
+        $this->assertEquals('එක්දහස් නවසිය දොළහ', $this->converter->toWords(1912));
+
+        // 2000 to 2999 (random samples)
+        $this->assertEquals('දෙදහස', $this->converter->toWords(2000));
+        $this->assertEquals('දෙදහස් එක', $this->converter->toWords(2001));
+
     }
 }

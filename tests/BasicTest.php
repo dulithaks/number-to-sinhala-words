@@ -118,13 +118,13 @@ class BasicTest extends TestCase
     /** @test */
     public function it_converts_thousands_to_words()
     {
-        $this->assertEquals('දාහ', $this->converter->toWords(1000));
+        $this->assertEquals('දහස', $this->converter->toWords(1000));
         $this->assertEquals('එක්දහස් එකසීය', $this->converter->toWords(1100));
         $this->assertEquals('එක්දහස් පන්සීය', $this->converter->toWords(1500));
-        $this->assertEquals('දෙදාහ', $this->converter->toWords(2000));
-        $this->assertEquals('තුන්දාහ', $this->converter->toWords(3000));
+        $this->assertEquals('දෙදහස', $this->converter->toWords(2000));
+        $this->assertEquals('තුන්දහස', $this->converter->toWords(3000));
         $this->assertEquals('දහදාහ', $this->converter->toWords(10000));
-        $this->assertEquals('විසි දාහ', $this->converter->toWords(20000));
+        $this->assertEquals('විසි දහස', $this->converter->toWords(20000));
     }
 
     /** @test */
@@ -155,7 +155,7 @@ class BasicTest extends TestCase
     {
         $result = $this->converter->toWords(1.5);
         $this->assertStringContainsString('එක දශම', $result);
-        
+
         $result = $this->converter->toWords(12.34);
         $this->assertStringContainsString('දොළහ දශම', $result);
     }
@@ -173,7 +173,7 @@ class BasicTest extends TestCase
     {
         $result = $this->converter->toCurrency(100.50);
         $this->assertStringContainsString('රු. සියය සහ සත', $result);
-        
+
         $result = $this->converter->toCurrency(25.75);
         $this->assertStringContainsString('රු. විසිපහ සහ සත', $result);
     }
@@ -182,7 +182,7 @@ class BasicTest extends TestCase
     public function it_converts_zero_currency_to_words()
     {
         $this->assertEquals('රු. බිංදුව', $this->converter->toCurrency(0));
-        
+
         $result = $this->converter->toCurrency(0.50);
         $this->assertStringContainsString('රු. බිංදුව සහ සත', $result);
     }
