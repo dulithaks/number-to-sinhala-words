@@ -121,14 +121,50 @@ class Num100To999Test extends TestCase
         $this->assertEquals('එකසිය අනූ හත', $this->converter->toWords(197));
         $this->assertEquals('එකසිය අනූ අට', $this->converter->toWords(198));
         $this->assertEquals('එකසිය අනූ නවය', $this->converter->toWords(199));
+
+        // 200 - 299
+        $this->assertEquals('දෙසිය', $this->converter->toWords(200));
         $this->assertEquals('දෙසිය එක', $this->converter->toWords(201));
-        $this->assertEquals('දෙසිය දෙක', $this->converter->toWords(202));
-        $this->assertEquals('දෙසිය තුන', $this->converter->toWords(203));
-        $this->assertEquals('දෙසිය පහ', $this->converter->toWords(205));
-        $this->assertEquals('දෙසිය හය', $this->converter->toWords(206));
+        $this->assertEquals('දෙසිය දොළහ', $this->converter->toWords(212));
 
         // 300 - 399
+        $this->assertEquals('තුන්සියය', $this->converter->toWords(300));
         $this->assertEquals('තුන්සිය එක', $this->converter->toWords(301));
-        $this->assertEquals('තුන්සිය දෙක', $this->converter->toWords(302));
+        $this->assertEquals('තුන්සිය දොළහ', $this->converter->toWords(312));
+
+        // 300 - 399
+        $this->assertEquals('තුන්සිය', $this->converter->toWords(300));
+        $this->assertEquals('තුන්සිය එක', $this->converter->toWords(301));
+        $this->assertEquals('තුන්සිය දොළහ', $this->converter->toWords(312));
+
+        // 400 - 499
+        $this->assertEquals('හාරසියය', $this->converter->toWords(400));
+        $this->assertEquals('හාරසිය එක', $this->converter->toWords(401));
+        $this->assertEquals('හාරසිය දොළහ', $this->converter->toWords(412));
+
+        // 500 - 599
+        $this->assertEquals('පන්සියය', $this->converter->toWords(500));
+        $this->assertEquals('පන්සිය එක', $this->converter->toWords(501));
+        $this->assertEquals('පන්සිය දොළහ', $this->converter->toWords(512));
+
+        // 600 - 699
+        $this->assertEquals('හයසීය', $this->converter->toWords(600));
+        $this->assertEquals('හයසිය එක', $this->converter->toWords(601));
+        $this->assertEquals('හයසිය දොළහ', $this->converter->toWords(612));
+
+        // 700 - 799
+        $this->assertEquals('හත්සීය', $this->converter->toWords(700));
+        $this->assertEquals('හතසිය එක', $this->converter->toWords(701));
+        $this->assertEquals('හතසිය දොළහ', $this->converter->toWords(712));
+
+        // 800 - 899
+        $this->assertEquals('අටසීය', $this->converter->toWords(800));
+        $this->assertEquals('අටසිය එක', $this->converter->toWords(801));
+        $this->assertEquals('අටසිය දොළහ', $this->converter->toWords(812));
+
+        // 900 - 999
+        $this->assertEquals('නවසීය', $this->converter->toWords(900));
+        $this->assertEquals('නවසිය එක', $this->converter->toWords(901));
+        $this->assertEquals('නවසිය දොළහ', $this->converter->toWords(912));
     }
 }
