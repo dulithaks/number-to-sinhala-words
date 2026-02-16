@@ -5,7 +5,7 @@ namespace Dulithaks\NumberToSinhalaWords\Tests;
 use Dulithaks\NumberToSinhalaWords\SinhalaConverter;
 use PHPUnit\Framework\TestCase;
 
-class SinhalaConverterTest extends TestCase
+class BasicTest extends TestCase
 {
     protected $converter;
 
