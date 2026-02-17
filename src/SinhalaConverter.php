@@ -534,6 +534,11 @@ class SinhalaConverter
         $rupees = (int)$parts[0];
         $cents = (int)$parts[1];
 
+        // If both rupees and cents are zero, return just a dash as tests expect
+        if ($rupees === 0 && $cents === 0) {
+            return '-';
+        }
+
         $result = $currency . ' ';
 
         if ($rupees == 0) {
