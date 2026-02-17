@@ -536,13 +536,13 @@ class SinhalaConverter
         $result = $currency . ' ';
 
         if ($rupees == 0) {
-            $result .= 'බිංදුව';
+            $result .= '-';
         } else {
             $result .= $this->toWords($rupees);
         }
 
         if ($cents > 0) {
-            $result .= ' සහ සත ' . $this->toWords($cents);
+            $result .= 'යි සත ' . $this->toWords($cents);
         }
 
         return $result;
