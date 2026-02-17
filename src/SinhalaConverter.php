@@ -539,6 +539,11 @@ class SinhalaConverter
             return '-';
         }
 
+        // If rupees are zero but there are cents, return only the cents phrase (no currency symbol)
+        if ($rupees === 0 && $cents > 0) {
+            return 'සත ' . $this->toWords($cents);
+        }
+
         $result = $currency . ' ';
 
         if ($rupees == 0) {
