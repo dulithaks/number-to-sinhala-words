@@ -154,19 +154,19 @@ class BasicTest extends TestCase
     public function it_converts_currency_with_cents_to_words()
     {
         $result = $this->converter->toCurrency(100.50);
-        $this->assertStringContainsString('රු. සියය සහ සත', $result);
+        $this->assertEquals('රු. සියයයි සත පනහ', $result);
 
         $result = $this->converter->toCurrency(25.75);
-        $this->assertStringContainsString('රු. විසිපහ සහ සත', $result);
+        $this->assertEquals('රු. විසිපහයි සත හැත්තෑපහ', $result);
     }
 
     /** @test */
     public function it_converts_zero_currency_to_words()
     {
-        $this->assertEquals('රු. බිංදුව', $this->converter->toCurrency(0));
+        $this->assertEquals('-', $this->converter->toCurrency(0));
 
         $result = $this->converter->toCurrency(0.50);
-        $this->assertStringContainsString('රු. බිංදුව සහ සත', $result);
+        $this->assertEquals('සත පනහ', $result);
     }
 
     /** @test */
@@ -195,7 +195,7 @@ class BasicTest extends TestCase
     public function it_converts_lower_boundary_zero()
     {
         $this->assertEquals('බිංදුව', $this->converter->toWords(0));
-        $this->assertEquals('රු. බිංදුව', $this->converter->toCurrency(0));
+        $this->assertEquals('-', $this->converter->toCurrency(0));
     }
 
     /** @test */
