@@ -199,7 +199,8 @@ class SinhalaConverter
             $lakhs = floor($number / 100000);
             $remainder = $number % 100000;
             if ($lakhs == 1) {
-                $result = 'ලක්ෂය';
+                // Use 'ලක්ෂය' for exact 100000, 'එක්ලක්ෂ' when there's a remainder
+                $result = ($remainder == 0) ? 'ලක්ෂය' : 'එක්ලක්ෂ';
             } else {
                 // Single-lakh concatenated prefixes (2-9).
                 $singlePrefixes = [

@@ -65,15 +65,15 @@ class Num100000To10000000Test extends TestCase
     public function it_converts_random_numbers_between_100000_and_10000000_to_words()
     {
         // 110,000 – 190,000
-        $this->assertEquals('එක් ලක්ෂ දස දහස', $this->converter->toWords(110000));
-        $this->assertEquals('එක් ලක්ෂ විසි දහස', $this->converter->toWords(120000));
-        $this->assertEquals('එක් ලක්ෂ තිස් දහස', $this->converter->toWords(130000));
-        $this->assertEquals('එක් ලක්ෂ හතලිස් දහස', $this->converter->toWords(140000));
-        $this->assertEquals('එක් ලක්ෂ පනස් දහස', $this->converter->toWords(150000));
-        $this->assertEquals('එක් ලක්ෂ හැට දහස', $this->converter->toWords(160000));
-        $this->assertEquals('එක් ලක්ෂ හැත්තෑ දහස', $this->converter->toWords(170000));
-        $this->assertEquals('එක් ලක්ෂ අසූ දහස', $this->converter->toWords(180000));
-        $this->assertEquals('එක් ලක්ෂ අනූ දහස', $this->converter->toWords(190000));
+        $this->assertEquals('එක්ලක්ෂ දසදහස', $this->converter->toWords(110000));
+        $this->assertEquals('එක්ලක්ෂ විසිදහස', $this->converter->toWords(120000));
+        $this->assertEquals('එක්ලක්ෂ තිස්දහස', $this->converter->toWords(130000));
+        $this->assertEquals('එක්ලක්ෂ හතළිස්දහස', $this->converter->toWords(140000));
+        $this->assertEquals('එක්ලක්ෂ පනස්දහස', $this->converter->toWords(150000));
+        $this->assertEquals('එක්ලක්ෂ හැටදහස', $this->converter->toWords(160000));
+        $this->assertEquals('එක්ලක්ෂ හැත්තෑදහස', $this->converter->toWords(170000));
+        $this->assertEquals('එක්ලක්ෂ අසූදහස', $this->converter->toWords(180000));
+        $this->assertEquals('එක්ලක්ෂ අනූදහස', $this->converter->toWords(190000));
 
     }
 }
