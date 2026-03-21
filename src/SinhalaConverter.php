@@ -3,6 +3,7 @@
 namespace Dulithaks\NumberToSinhalaWords;
 
 use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
+use Dulithaks\NumberToSinhalaWords\Exceptions\NumberOutOfRangeException;
 
 class SinhalaConverter
 {
@@ -122,9 +123,9 @@ class SinhalaConverter
             throw new NegativeNumberException('Negative numbers are not supported.');
         }
 
-        // Handle zero
-        if ($number == 0) {
-            return 'බිංදුව';
+        // Range validation (1 to 9,999,999)
+        if ($number < 1 || $number > 9999999) {
+            throw new NumberOutOfRangeException('Number must be between 1 and 9,999,999.');
         }
 
         // Handle decimal numbers
@@ -199,7 +200,8 @@ class SinhalaConverter
             $lakhs = floor($number / 100000);
             $remainder = $number % 100000;
             if ($lakhs == 1) {
-                $result = 'ලක්ෂය';
+                // Use 'ලක්ෂය' for exact 100000, 'එක්ලක්ෂ' when there's a remainder
+                $result = ($remainder == 0) ? 'ලක්ෂය' : 'එක්ලක්ෂ';
             } else {
                 // Single-lakh concatenated prefixes (2-9).
                 $singlePrefixes = [
@@ -533,16 +535,26 @@ class SinhalaConverter
         $rupees = (int)$parts[0];
         $cents = (int)$parts[1];
 
+        // If both rupees and cents are zero, return just a dash as tests expect
+        if ($rupees === 0 && $cents === 0) {
+            return '-';
+        }
+
+        // If rupees are zero but there are cents, return only the cents phrase (no currency symbol)
+        if ($rupees === 0 && $cents > 0) {
+            return 'සත ' . $this->toWords($cents);
+        }
+
         $result = $currency . ' ';
 
         if ($rupees == 0) {
-            $result .= 'බිංදුව';
+            $result .= '-';
         } else {
             $result .= $this->toWords($rupees);
         }
 
         if ($cents > 0) {
-            $result .= ' සහ සත ' . $this->toWords($cents);
+            $result .= 'යි සත ' . $this->toWords($cents);
         }
 
         return $result;
