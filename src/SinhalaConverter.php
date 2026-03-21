@@ -3,6 +3,7 @@
 namespace Dulithaks\NumberToSinhalaWords;
 
 use Dulithaks\NumberToSinhalaWords\Exceptions\NegativeNumberException;
+use Dulithaks\NumberToSinhalaWords\Exceptions\NumberOutOfRangeException;
 
 class SinhalaConverter
 {
@@ -122,9 +123,9 @@ class SinhalaConverter
             throw new NegativeNumberException('Negative numbers are not supported.');
         }
 
-        // Handle zero
-        if ($number == 0) {
-            return 'බිංදුව';
+        // Range validation (1 to 9,999,999)
+        if ($number < 1 || $number > 9999999) {
+            throw new NumberOutOfRangeException('Number must be between 1 and 9,999,999.');
         }
 
         // Handle decimal numbers
